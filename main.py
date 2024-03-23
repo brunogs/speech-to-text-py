@@ -14,7 +14,7 @@ def downloadVideo(rawUrl):
             'preferredcodec': 'mp3',
             'preferredquality': '192',
         }],
-        'outtmpl': './resources/good_speech.mp3'
+        'outtmpl': '/resources/good_speech1'
     }
     with yt_dlp.YoutubeDL(yt_opts) as ydl:
         try:
