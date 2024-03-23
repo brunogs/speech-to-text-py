@@ -3,13 +3,13 @@ import yt_dlp
 import whisper
 
 def main():
-    downloadVideo("https://www.youtube.com/watch?v=0dG7UIWu2ik")
+    download_video("https://www.youtube.com/watch?v=0dG7UIWu2ik")
     loaded_model = load_model()
     if loaded_model:
         transcribe_speech(loaded_model, "/resources/good_speech.mp3")
     print("Python application using yt-dlp and whisper")
 
-def downloadVideo(rawUrl):
+def download_video(rawUrl):
     yt_opts = {
         'format': 'bestaudio',
         'postprocessors': [{
