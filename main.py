@@ -1,10 +1,26 @@
 # main.py
 import yt_dlp
-from whisper import whisper
+import whisper
 
 def main():
-    # Your code here
+    downloadVideo("https://www.youtube.com/watch?v=0dG7UIWu2ik")
     print("Python application using yt-dlp and whisper")
+
+def downloadVideo(rawUrl):
+    yt_opts = {
+        'format': 'bestaudio',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
+        'outtmpl': './resources/good_speech.mp3'
+    }
+    with yt_dlp.YoutubeDL(yt_opts) as ydl:
+        try:
+            ydl.download([rawUrl])
+        except yt_dlp.DownloadError as e:
+            print('Error downloading video:', e)
 
 if __name__ == "__main__":
     main()
